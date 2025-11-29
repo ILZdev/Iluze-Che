@@ -117,6 +117,36 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+        z-index: 101;
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        z-index: 101;
+        padding: 10px;
+      }
+
+      .hamburger span {
+        width: 25px;
+        height: 3px;
+        background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+        border-radius: 3px;
+        transition: all 0.3s ease;
+      }
+
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
       }
 
       .nav-links {
@@ -930,6 +960,47 @@
 
       /* Responsive */
       @media (max-width: 768px) {
+        .hamburger {
+          display: flex;
+        }
+
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          height: 100%;
+          width: 80%;
+          max-width: 300px;
+          background: rgba(255, 255, 255, 0.98);
+          backdrop-filter: blur(20px);
+          flex-direction: column;
+          padding: 5rem 2rem 2rem;
+          gap: 0;
+          box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+          transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          overflow-y: auto;
+        }
+
+        .nav-links.active {
+          right: 0;
+        }
+
+        .nav-links li {
+          width: 100%;
+          border-bottom: 1px solid rgba(236, 72, 153, 0.1);
+        }
+
+        .nav-links a {
+          display: block;
+          padding: 1rem 0;
+          font-size: 1rem;
+          width: 100%;
+        }
+
+        .nav-links a::after {
+          display: none;
+        }
+
         .hero h1 {
           font-size: 2.5rem;
         }
@@ -953,14 +1024,6 @@
 
         .section-title {
           font-size: 2rem;
-        }
-
-        .nav-links {
-          gap: 1rem;
-        }
-
-        .nav-links a {
-          font-size: 0.75rem;
         }
 
         section {
@@ -993,6 +1056,58 @@
         .item-actions {
           width: 100%;
         }
+
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .finance-summary {
+          grid-template-columns: 1fr;
+        }
+
+        .grid-2col {
+          grid-template-columns: 1fr;
+        }
+
+        .card-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .form-card {
+          padding: 1.5rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1rem;
+        }
+
+        .countdown-box {
+          padding: 1rem;
+          gap: 0.75rem;
+        }
+
+        .countdown-value {
+          font-size: 1.5rem;
+        }
+
+        .countdown-label {
+          font-size: 0.75rem;
+        }
+
+        .section-title {
+          font-size: 1.75rem;
+        }
+
+        .hero-avatar img {
+          width: 150px !important;
+          height: 150px !important;
+        }
       }
     </style>
     <style>
@@ -1010,7 +1125,10 @@
       <!-- Navigation -->
       <nav id="nav">
         <div class="logo">💜 I &amp; C</div>
-        <ul class="nav-links">
+        <div class="hamburger" id="hamburger">
+          <span></span> <span></span> <span></span>
+        </div>
+        <ul class="nav-links" id="nav-links">
           <li><a href="#home">Home</a></li>
           <li><a href="#story">Story</a></li>
           <li><a href="#hobbies">Hobbies</a></li>
@@ -1039,7 +1157,7 @@
                 height: 200px;
                 border-radius: 50%;
                 object-fit: cover;
-                object-position: 50% 20%;
+                object-position: 80% 20%;
                 box-shadow: 0 20px 60px rgba(236, 72, 153, 0.4);
                 border: 6px solid white;
               "
@@ -1176,7 +1294,7 @@
                   <select id="hobby-person" required>
                     <option value="Iluze">Iluze</option>
                     <option value="Che">Che</option>
-                    <option value="Both">Both</option>
+                    <option value="Bersama">Bersama</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -1464,7 +1582,7 @@
                 <select id="mood-person" required>
                   <option value="Iluze">Iluze</option>
                   <option value="Che">Che</option>
-                  <option value="Both">Both</option>
+                  <option value="Bersama">Bersama</option>
                 </select>
               </div>
               <div class="form-group">
@@ -1606,7 +1724,7 @@
                   <select id="finance-person" required>
                     <option value="Iluze">💙 Iluze</option>
                     <option value="Che">💖 Che</option>
-                    <option value="Both">👫 Both</option>
+                    <option value="Bersama">👫 Bersama</option>
                   </select>
                 </div>
               </div>
@@ -1641,7 +1759,7 @@
             </button>
             <button class="filter-tab" data-filter="iluze">💙 Iluze</button>
             <button class="filter-tab" data-filter="che">💖 Che</button>
-            <button class="filter-tab" data-filter="both">👫 Berdua</button>
+            <button class="filter-tab" data-filter="Bersama">👫 Berdua</button>
           </div>
           <div class="item-list" id="finance-list"></div>
         </div>
@@ -1807,7 +1925,7 @@
           description:
             "Iluze ngajarin Che main gitar. Sekarang udah bisa beberapa chord!",
           category: "music",
-          person: "Both",
+          person: "Bersama",
           progress: 45,
           imageUrl:
             "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800&q=80",
@@ -1843,13 +1961,13 @@
           id: "travel1",
           type: "travel",
           title: "Tokyo, Japan",
-          date: "2025-12-20",
+          date: "2024-12-20",
           amount: 25000000,
           status: "upcoming",
           notes: "Shibuya crossing, Tokyo Tower, cherry blossoms!",
           imageUrl:
             "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&q=80",
-          createdAt: new Date("2025-07-01").toISOString(),
+          createdAt: new Date("2024-07-01").toISOString(),
         },
         {
           id: "travel2",
@@ -1911,7 +2029,7 @@
           date: "2024-12-31",
           imageUrl:
             "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800&q=80",
-          createdAt: new Date("2025-01-15").toISOString(),
+          createdAt: new Date("2024-01-15").toISOString(),
         },
         {
           id: "challenge2",
@@ -2063,7 +2181,7 @@
           type: "mood",
           mood: "😍",
           description: "Hari yang menyenangkan! Quality time bareng maksimal",
-          person: "Both",
+          person: "Bersama",
           date: new Date().toISOString().split("T")[0],
           createdAt: new Date().toISOString(),
         },
@@ -2120,7 +2238,7 @@
           title: "Makan Malam",
           financeCategory: "food",
           amount: 150000,
-          person: "Both",
+          person: "Bersama",
           date: new Date().toISOString().split("T")[0],
           createdAt: new Date().toISOString(),
         },
@@ -2142,7 +2260,7 @@
           title: "Nonton Bioskop",
           financeCategory: "entertainment",
           amount: 100000,
-          person: "Both",
+          person: "Bersama",
           date: new Date(Date.now() - 345600000).toISOString().split("T")[0],
           createdAt: new Date(Date.now() - 345600000).toISOString(),
         },
@@ -2184,7 +2302,7 @@
           type: "message",
           from: "Che",
           message:
-            "Iluze, aku sayang banget sama kamu. Makasih udah jadi support system terbaik. You mean the world to me! ��",
+            "Iluze, aku sayang banget sama kamu. Makasih udah jadi support system terbaik. You mean the world to me! ❤️",
           date: new Date().toISOString().split("T")[0],
           createdAt: new Date().toISOString(),
         },
@@ -2453,6 +2571,9 @@
 
       function setupNavigation() {
         const nav = document.getElementById("nav");
+        const hamburger = document.getElementById("hamburger");
+        const navLinks = document.getElementById("nav-links");
+
         window.addEventListener("scroll", () => {
           if (window.scrollY > 50) {
             nav.classList.add("scrolled");
@@ -2461,14 +2582,32 @@
           }
         });
 
+        // Toggle hamburger menu
+        hamburger.addEventListener("click", () => {
+          hamburger.classList.toggle("active");
+          navLinks.classList.toggle("active");
+        });
+
+        // Close menu when clicking on a link
         document.querySelectorAll(".nav-links a").forEach((link) => {
           link.addEventListener("click", (e) => {
             e.preventDefault();
             const target = document.querySelector(link.getAttribute("href"));
             if (target) {
               target.scrollIntoView({ behavior: "smooth" });
+              // Close mobile menu
+              hamburger.classList.remove("active");
+              navLinks.classList.remove("active");
             }
           });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener("click", (e) => {
+          if (!nav.contains(e.target)) {
+            hamburger.classList.remove("active");
+            navLinks.classList.remove("active");
+          }
         });
       }
 
@@ -2836,7 +2975,7 @@
           <p class="timeline-desc">${story.description}</p>
           ${
             story.imageUrl
-              ? `<img src="${story.imageUrl}" alt="${story.title}" class="timeline-image" style="object-position: 50% 20%" onerror="this.style.display='none'; this.alt='Image failed to load';">`
+              ? `<img src="${story.imageUrl}" alt="${story.title}" class="timeline-image" style="object-position: 80% 20%" onerror="this.style.display='none'; this.alt='Image failed to load';">`
               : ""
           }
           <button class="btn btn-danger btn-small" onclick="deleteItem('${
@@ -2884,7 +3023,7 @@
               }
               <div class="item-meta">
                 <span class="meta-tag">${icon} ${hobby.category}</span>
-                <span class="meta-tag">👤 ${hobby.person}</span>
+                <span class="meta-tag">💕 ${hobby.person}</span>
                 <span class="meta-tag">📊 ${progress}%</span>
               </div>
               <div class="progress-bar-container">
@@ -3118,7 +3257,7 @@
             <div class="item-title">${mood.mood} ${mood.date}</div>
             <div class="item-desc">${mood.description || "No note"}</div>
             <div class="item-meta">
-              <span class="meta-tag">👤 ${mood.person}</span>
+              <span class="meta-tag">💕 ${mood.person}</span>
             </div>
           </div>
           <div class="item-actions">
@@ -3178,8 +3317,8 @@
           finances = finances.filter((f) => f.person === "Iluze");
         } else if (currentFinanceFilter === "che") {
           finances = finances.filter((f) => f.person === "Che");
-        } else if (currentFinanceFilter === "both") {
-          finances = finances.filter((f) => f.person === "Both");
+        } else if (currentFinanceFilter === "Bersama") {
+          finances = finances.filter((f) => f.person === "Bersama");
         }
 
         finances.sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -3590,7 +3729,7 @@
           if (b) {
             var d = b.createElement("script");
             d.innerHTML =
-              "window.__CF$cv$params={r:'9a623eaa702503d4',t:'MTc2NDQyMDc3My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+              "window.__CF$cv$params={r:'9a6259e485080557',t:'MTc2NDQyMTg4OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
             b.getElementsByTagName("head")[0].appendChild(d);
           }
         }
