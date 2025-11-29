@@ -1,0 +1,3622 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iluze &amp; Che - Our Love Journal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:wght@400;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="/_sdk/element_sdk.js"></script>
+    <style>
+      body {
+        box-sizing: border-box;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        height: 100%;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background: linear-gradient(
+          135deg,
+          #fce7f3 0%,
+          #e0e7ff 50%,
+          #ddd6fe 100%
+        );
+        color: #1f2937;
+        line-height: 1.6;
+        overflow-x: hidden;
+        min-height: 100%;
+        width: 100%;
+      }
+
+      .page-wrapper {
+        width: 100%;
+        min-height: 100%;
+        position: relative;
+      }
+
+      /* Floating particles background */
+      .particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+      }
+
+      .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: rgba(236, 72, 153, 0.3);
+        border-radius: 50%;
+        animation: float 20s infinite ease-in-out;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) translateX(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100%) translateX(100px);
+          opacity: 0;
+        }
+      }
+
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100;
+        border-bottom: 1px solid rgba(236, 72, 153, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      nav.scrolled {
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+      }
+
+      .logo {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+        flex-wrap: wrap;
+      }
+
+      .nav-links a {
+        color: #6b7280;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.875rem;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: #ec4899;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      /* Hero Section */
+      .hero {
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 6rem 2rem 4rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        animation: fadeInUp 1s ease;
+      }
+
+      .hero-avatar {
+        font-size: 8rem;
+        margin-bottom: 2rem;
+        animation: floatAvatar 3s ease-in-out infinite;
+        filter: drop-shadow(0 10px 30px rgba(236, 72, 153, 0.3));
+      }
+
+      @keyframes floatAvatar {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      .hero h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 4rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero-subtitle {
+        font-size: 1.5rem;
+        color: #6b7280;
+        font-weight: 300;
+        margin-bottom: 3rem;
+        letter-spacing: 2px;
+      }
+
+      .countdown-box {
+        display: inline-flex;
+        gap: 2rem;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+        padding: 2rem 3rem;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(236, 72, 153, 0.15);
+        margin-top: 2rem;
+      }
+
+      .countdown-item {
+        text-align: center;
+      }
+
+      .countdown-value {
+        font-size: 3rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .countdown-label {
+        font-size: 0.875rem;
+        color: #9ca3af;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 0.5rem;
+      }
+
+      /* Dashboard Stats */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+      }
+
+      .stat-card {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(20px);
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 10px 40px rgba(236, 72, 153, 0.1);
+        transition: all 0.4s ease;
+        border: 1px solid rgba(236, 72, 153, 0.1);
+      }
+
+      .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 60px rgba(236, 72, 153, 0.2);
+      }
+
+      .stat-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .stat-value {
+        font-size: 2rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-label {
+        font-size: 0.875rem;
+        color: #9ca3af;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* Section Styles */
+      section {
+        padding: 6rem 2rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .section-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+        animation: fadeInUp 0.8s ease;
+      }
+
+      .section-title {
+        font-family: "Playfair Display", serif;
+        font-size: 3rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1rem;
+      }
+
+      .section-subtitle {
+        color: #9ca3af;
+        font-size: 1.125rem;
+      }
+
+      /* Timeline */
+      .timeline-scroll {
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 2rem 0;
+        margin: 0 -2rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+
+      .timeline-scroll::-webkit-scrollbar {
+        height: 8px;
+      }
+
+      .timeline-scroll::-webkit-scrollbar-track {
+        background: rgba(236, 72, 153, 0.1);
+        border-radius: 10px;
+      }
+
+      .timeline-scroll::-webkit-scrollbar-thumb {
+        background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+        border-radius: 10px;
+      }
+
+      .timeline {
+        display: flex;
+        gap: 2rem;
+        min-width: max-content;
+        padding-bottom: 1rem;
+      }
+
+      .timeline-card {
+        min-width: 350px;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(20px);
+        border-radius: 20px;
+        padding: 1.5rem;
+        box-shadow: 0 10px 40px rgba(236, 72, 153, 0.1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid rgba(236, 72, 153, 0.1);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .timeline-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 60px rgba(236, 72, 153, 0.2);
+      }
+
+      .timeline-date {
+        font-size: 0.875rem;
+        color: #ec4899;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .timeline-icon {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .timeline-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #1f2937;
+      }
+
+      .timeline-desc {
+        color: #6b7280;
+        line-height: 1.7;
+        margin-bottom: 1rem;
+      }
+
+      .timeline-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 12px;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .item-image,
+      .diary-image {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 12px;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      /* Card Grid untuk Travel dan Challenge */
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .card-item {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(20px);
+        border-radius: 20px;
+        padding: 1.5rem;
+        box-shadow: 0 10px 40px rgba(236, 72, 153, 0.1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid rgba(236, 72, 153, 0.1);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .card-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 60px rgba(236, 72, 153, 0.2);
+      }
+
+      .card-image {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 12px;
+        margin-bottom: 1rem;
+      }
+
+      .card-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+        color: #1f2937;
+      }
+
+      .card-desc {
+        color: #6b7280;
+        font-size: 0.875rem;
+        line-height: 1.6;
+        margin-bottom: 0.75rem;
+        flex-grow: 1;
+      }
+
+      .card-meta {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .card-actions {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: auto;
+      }
+
+      /* Item List */
+      .item-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .item {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(20px);
+        padding: 1.5rem;
+        border-radius: 16px;
+        border-left: 4px solid #ec4899;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 20px rgba(236, 72, 153, 0.1);
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .item:hover {
+        transform: translateX(5px);
+        box-shadow: 0 8px 30px rgba(236, 72, 153, 0.2);
+      }
+
+      .item-content {
+        flex: 1;
+        min-width: 250px;
+      }
+
+      .item-title {
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 0.5rem;
+        font-size: 1.125rem;
+      }
+
+      .item-desc {
+        font-size: 0.875rem;
+        color: #6b7280;
+        margin-bottom: 0.5rem;
+      }
+
+      .item-meta {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 0.75rem;
+        flex-wrap: wrap;
+      }
+
+      .meta-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        padding: 0.25rem 0.75rem;
+        background: rgba(236, 72, 153, 0.1);
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: #ec4899;
+      }
+
+      .meta-tag.priority-high {
+        background: rgba(239, 68, 68, 0.15);
+        color: #ef4444;
+      }
+
+      .meta-tag.priority-medium {
+        background: rgba(251, 146, 60, 0.15);
+        color: #f59e0b;
+      }
+
+      .meta-tag.priority-low {
+        background: rgba(34, 197, 94, 0.15);
+        color: #22c55e;
+      }
+
+      .progress-bar-container {
+        width: 100%;
+        height: 8px;
+        background: rgba(236, 72, 153, 0.15);
+        border-radius: 10px;
+        overflow: hidden;
+        margin-top: 0.75rem;
+      }
+
+      .progress-bar {
+        height: 100%;
+        background: linear-gradient(90deg, #ec4899 0%, #8b5cf6 100%);
+        border-radius: 10px;
+        transition: width 0.5s ease;
+      }
+
+      .item-actions {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+
+      /* Mood Selector */
+      .mood-selector {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: 2rem 0;
+      }
+
+      .mood-btn {
+        font-size: 3rem;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.6);
+        border: 3px solid transparent;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 15px rgba(236, 72, 153, 0.1);
+      }
+
+      .mood-btn:hover {
+        transform: scale(1.15) rotate(5deg);
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 8px 25px rgba(236, 72, 153, 0.2);
+      }
+
+      .mood-btn.selected {
+        border-color: #ec4899;
+        background: rgba(236, 72, 153, 0.15);
+        box-shadow: 0 6px 20px rgba(236, 72, 153, 0.3);
+        transform: scale(1.1);
+      }
+
+      /* Diary Entry */
+      .diary-entry {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        padding: 2rem;
+        border-radius: 20px;
+        border-left: 4px solid #8b5cf6;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 4px 20px rgba(139, 92, 246, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .diary-entry:hover {
+        transform: translateX(5px);
+        box-shadow: 0 8px 30px rgba(139, 92, 246, 0.2);
+      }
+
+      .diary-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .diary-date {
+        font-weight: 700;
+        color: #8b5cf6;
+        font-size: 1.125rem;
+      }
+
+      .diary-content {
+        font-family: "Playfair Display", serif;
+        font-size: 1.125rem;
+        color: #4b5563;
+        line-height: 1.9;
+        white-space: pre-wrap;
+      }
+
+      /* Finance Summary */
+      .finance-summary {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+      }
+
+      .finance-card {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(20px);
+        padding: 2rem;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 10px 40px rgba(236, 72, 153, 0.1);
+        border: 1px solid rgba(236, 72, 153, 0.1);
+      }
+
+      .finance-label {
+        font-size: 0.875rem;
+        color: #9ca3af;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 1rem;
+      }
+
+      .finance-value {
+        font-size: 1.75rem;
+        font-weight: 800;
+        margin: 0.5rem 0;
+      }
+
+      .finance-value.positive {
+        color: #10b981;
+      }
+
+      .finance-value.negative {
+        color: #ef4444;
+      }
+
+      .finance-value.neutral {
+        background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* Chart */
+      #finance-chart {
+        width: 100%;
+        height: 300px;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 16px;
+        padding: 1rem;
+      }
+
+      /* Filter Tabs */
+      .filter-tabs {
+        display: flex;
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .filter-tab {
+        padding: 0.5rem 1.25rem;
+        background: rgba(255, 255, 255, 0.6);
+        border: 2px solid rgba(236, 72, 153, 0.2);
+        border-radius: 20px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #6b7280;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .filter-tab:hover {
+        background: rgba(255, 255, 255, 0.9);
+        border-color: rgba(236, 72, 153, 0.4);
+      }
+
+      .filter-tab.active {
+        background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+        color: white;
+        border-color: transparent;
+        box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+      }
+
+      /* Forms */
+      .form-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-radius: 20px;
+        padding: 2.5rem;
+        box-shadow: 0 20px 60px rgba(236, 72, 153, 0.15);
+        margin-bottom: 2rem;
+        border: 1px solid rgba(236, 72, 153, 0.1);
+      }
+
+      .form-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.75rem;
+        margin-bottom: 2rem;
+        color: #1f2937;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #374151;
+        font-size: 0.875rem;
+      }
+
+      input,
+      textarea,
+      select {
+        width: 100%;
+        padding: 0.875rem 1.25rem;
+        border: 2px solid rgba(236, 72, 153, 0.2);
+        border-radius: 12px;
+        font-size: 1rem;
+        font-family: inherit;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.8);
+        color: #1f2937;
+      }
+
+      input:focus,
+      textarea:focus,
+      select:focus {
+        outline: none;
+        border-color: #ec4899;
+        background: #ffffff;
+        box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.1);
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      .grid-2col {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+      }
+
+      /* Buttons */
+      .btn {
+        padding: 0.875rem 1.75rem;
+        border: none;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        font-family: inherit;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        justify-content: center;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+        color: white;
+        box-shadow: 0 4px 20px rgba(236, 72, 153, 0.3);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(236, 72, 153, 0.4);
+      }
+
+      .btn-primary:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .btn-secondary {
+        background: rgba(236, 72, 153, 0.1);
+        color: #ec4899;
+        border: 2px solid rgba(236, 72, 153, 0.2);
+      }
+
+      .btn-secondary:hover {
+        background: rgba(236, 72, 153, 0.2);
+        border-color: rgba(236, 72, 153, 0.4);
+      }
+
+      .btn-success {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: white;
+      }
+
+      .btn-success:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 25px rgba(16, 185, 129, 0.4);
+      }
+
+      .btn-danger {
+        background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        color: white;
+      }
+
+      .btn-danger:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 25px rgba(239, 68, 68, 0.4);
+      }
+
+      .btn-small {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+      }
+
+      /* Toast */
+      .toast {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 10px 40px rgba(236, 72, 153, 0.4);
+        z-index: 1000;
+        animation: slideInRight 0.3s ease;
+        font-weight: 500;
+      }
+
+      .toast.error {
+        background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+      }
+
+      /* Empty State */
+      .empty-state {
+        text-align: center;
+        padding: 4rem 2rem;
+        color: #9ca3af;
+      }
+
+      .empty-icon {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        opacity: 0.5;
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(100px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1.125rem;
+        }
+
+        .hero-avatar {
+          font-size: 5rem;
+        }
+
+        .countdown-box {
+          gap: 1rem;
+          padding: 1.5rem;
+        }
+
+        .countdown-value {
+          font-size: 2rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .nav-links {
+          gap: 1rem;
+        }
+
+        .nav-links a {
+          font-size: 0.75rem;
+        }
+
+        section {
+          padding: 4rem 1rem;
+        }
+
+        .timeline-card {
+          min-width: 280px;
+        }
+
+        .toast {
+          right: 1rem;
+          left: 1rem;
+          bottom: 1rem;
+        }
+
+        nav {
+          padding: 1rem;
+        }
+
+        .logo {
+          font-size: 1.25rem;
+        }
+
+        .item {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .item-actions {
+          width: 100%;
+        }
+      }
+    </style>
+    <style>
+      @view-transition {
+        navigation: auto;
+      }
+    </style>
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+    <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <!-- Particles Background -->
+      <div class="particles" id="particles"></div>
+      <!-- Navigation -->
+      <nav id="nav">
+        <div class="logo">💜 I &amp; C</div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#story">Story</a></li>
+          <li><a href="#hobbies">Hobbies</a></li>
+          <li><a href="#travel">Travel</a></li>
+          <li><a href="#challenge">Challenge</a></li>
+          <li><a href="#marketplace">Shop</a></li>
+          <li><a href="#mood">Mood</a></li>
+          <li><a href="#diary">Diary</a></li>
+          <li><a href="#finance">Finance</a></li>
+          <li><a href="#goals">Goals</a></li>
+          <li><a href="#messages">Messages</a></li>
+        </ul>
+      </nav>
+      <!-- Hero Section -->
+      <section id="home" class="hero">
+        <div class="hero-content">
+          <div
+            class="hero-avatar"
+            style="display: flex; justify-content: center; align-items: center"
+          >
+            <img
+              src="WhatsApp Image 2025-11-29 at 19.50.59.jpeg"
+              alt="Iluze &amp; Che"
+              style="
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+                object-fit: cover;
+                object-position: 50% 20%;
+                box-shadow: 0 20px 60px rgba(236, 72, 153, 0.4);
+                border: 6px solid white;
+              "
+              onerror="this.style.display='none'; this.alt='Foto gagal dimuat';"
+            />
+          </div>
+          <h1 id="hero-title">Iluze &amp; Che</h1>
+          <p class="hero-subtitle" id="hero-subtitle">Our Digital Love Story</p>
+          <div class="countdown-box">
+            <div class="countdown-item">
+              <div class="countdown-value" id="days">0</div>
+              <div class="countdown-label">Hari Bersama</div>
+            </div>
+          </div>
+          <!-- Dashboard Stats -->
+          <div class="stats-grid" style="margin-top: 4rem; max-width: 900px">
+            <div class="stat-card">
+              <div class="stat-icon">🎨</div>
+              <div class="stat-value" id="total-hobbies">0</div>
+              <div class="stat-label">Hobi</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">✈️</div>
+              <div class="stat-value" id="upcoming-trips">0</div>
+              <div class="stat-label">Perjalanan</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">🏆</div>
+              <div class="stat-value" id="active-challenges">0</div>
+              <div class="stat-label">Tantangan</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Story Timeline -->
+      <section id="story">
+        <div class="section-container">
+          <div class="section-header">
+            <h2 class="section-title" id="story-title">Our Story</h2>
+            <p class="section-subtitle">The journey of us</p>
+          </div>
+          <div class="timeline-scroll">
+            <div class="timeline" id="timeline"></div>
+          </div>
+          <div class="form-card">
+            <h3 class="form-title">Add Story Moment</h3>
+            <form id="story-form">
+              <div class="grid-2col">
+                <div class="form-group">
+                  <label for="story-date">Date</label>
+                  <input type="date" id="story-date" required />
+                </div>
+                <div class="form-group">
+                  <label for="story-emoji">Icon</label>
+                  <select id="story-emoji" required>
+                    <option value="💕">💕 Love</option>
+                    <option value="🌟">🌟 Special</option>
+                    <option value="✈️">✈️ Travel</option>
+                    <option value="🎂">🎂 Birthday</option>
+                    <option value="🎉">🎉 Celebration</option>
+                    <option value="����">💍 Engagement</option>
+                    <option value="🌹">🌹 Romance</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="story-title">Title</label>
+                <input
+                  type="text"
+                  id="story-title"
+                  required
+                  placeholder="First Date, Anniversary, etc."
+                />
+              </div>
+              <div class="form-group">
+                <label for="story-desc">Description</label>
+                <textarea
+                  id="story-desc"
+                  required
+                  placeholder="Tell the story..."
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label for="story-image">Image URL (Optional)</label>
+                <input
+                  type="url"
+                  id="story-image"
+                  placeholder="https://example.com/image.jpg"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">
+                ✨ Add Memory
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <!-- Hobbies -->
+      <section id="hobbies">
+        <div class="section-container">
+          <div class="section-header">
+            <h2 class="section-title" id="hobbies-title">Our Hobbies</h2>
+            <p class="section-subtitle">Creative projects we love</p>
+          </div>
+          <div class="item-list" id="hobby-list"></div>
+          <div class="form-card">
+            <h3 class="form-title">Add New Hobby</h3>
+            <form id="hobby-form">
+              <div class="grid-2col">
+                <div class="form-group">
+                  <label for="hobby-title">Project Title</label>
+                  <input
+                    type="text"
+                    id="hobby-title"
+                    required
+                    placeholder="e.g., Making Music"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="hobby-category">Category</label>
+                  <select id="hobby-category" required>
+                    <option value="music">🎵 Music</option>
+                    <option value="art">🎨 Art</option>
+                    <option value="craft">✂️ Craft</option>
+                    <option value="coding">💻 Coding</option>
+                    <option value="writing">✍️ Writing</option>
+                    <option value="other">🌟 Other</option>
+                  </select>
+                </div>
+              </div>
+              <div class="grid-2col">
+                <div class="form-group">
+                  <label for="hobby-person">Who?</label>
+                  <select id="hobby-person" required>
+                    <option value="Iluze">Iluze</option>
+                    <option value="Che">Che</option>
+                    <option value="Both">Both</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="hobby-progress">Progress (%)</label>
+                  <input
+                    type="number"
+                    id="hobby-progress"
+                    min="0"
+                    max="100"
+                    value="0"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="hobby-desc">Description</label>
+                <textarea id="hobby-desc" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="hobby-image">Image URL (Optional)</label>
+                <input
+                  type="url"
+                  id="hobby-image"
+                  placeholder="https://example.com/image.jpg"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Add Hobby</button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <!-- Travel -->
+      <section id="travel">
+        <div class="section-container">
+          <div class="section-header">
+            <h2 class="section-title" id="travel-title">Travel Plans</h2>
+            <p class="section-subtitle">Adventures together</p>
+          </div>
+          <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="all">Semua</button>
+            <button class="filter-tab" data-filter="upcoming">
+              Akan Datang
+            </button>
+            <button class="filter-tab" data-filter="ongoing">
+              Berlangsung
+            </button>
+            <button class="filter-tab" data-filter="completed">Selesai</button>
+          </div>
+          <div class="card-grid" id="travel-list"></div>
+          <div class="form-card">
+            <h3 class="form-title">Plan a Trip</h3>
+            <form id="travel-form">
+              <div class="grid-2col">
+                <div class="form-group">
+                  <label for="travel-destination">Destination</label>
+                  <input
+                    type="text"
+                    id="travel-destination"
+                    required
+                    placeholder="e.g., Bali"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="travel-date">Date</label>
+                  <input type="date" id="travel-date" required />
+                </div>
+              </div>
+              <div class="grid-2col">
+                <div class="form-group">
+                  <label for="travel-budget">Budget (Rp)</label>
+                  <input
+                    type="number"
+                    id="travel-budget"
+                    required
+                    placeholder="0"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="travel-status">Status</label>
+                  <select id="travel-status" required>
+                    <option value="upcoming">📅 Upcoming</option>
+                    <option value="ongoing">✈️ Ongoing</option>
+                    <option value="completed">✅ Completed</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="travel-notes">Notes</label>
+                <textarea
+                  id="travel-notes"
+                  placeholder="Itinerary, plans..."
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label for="travel-image">Image URL (Optional)</label>
+                <input
+                  type="url"
+                  id="travel-image"
+                  placeholder="https://example.com/image.jpg"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Add Trip</button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <!-- Challenge -->
+      <section id="challenge">
+        <div class="section-container">
+          <div class="section-header">
+            <h2 class="section-title" id="challenge-title">Our Challenges</h2>
+            <p class="section-subtitle">Goals we achieve together</p>
+          </div>
+          <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="all-challenge">
+              Semua
+            </button>
+            <button class="filter-tab" data-filter="active">Aktif</button>
+            <button class="filter-tab" data-filter="completed-challenge">
+              Selesai
+            </button>
+          </div>
+          <div class="card-grid" id="challenge-list"></div>
+          <div class="form-card">
+            <h3 class="form-title">Create Challenge</h3>
+            <form id="challenge-form">
+              <div class="grid-2col">
+                <div class="form-group">
+                  <label for="challenge-title">Challenge Name</label>
+                  <input
+                    type="text"
+                    id="challenge-title"
+                    required
+                    placeholder="e.g., Read 5 Books"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="challenge-priority">Priority</label>
+                  <select id="challenge-priority" required>
+                    <option value="high">🔴 High</option>
+                    <option value="medium">🟡 Medium</option>
+                    <option value="low">🟢 Low</option>
+                  </select>
+                </div>
+              </div>
+              <div class="grid-2col">
+                <div class="form-group">
+                  <label for="challenge-status">Status</label>
+                  <select id="challenge-status" required>
+                    <option value="active">🔄 Active</option>
+                    <option value="completed">✅ Completed</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="challenge-progress">Progress (%)</label>
+                  <input
+                    type="number"
+                    id="challenge-progress"
+                    min="0"
+                    max="100"
+                    value="0"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="challenge-deadline">Deadline (Optional)</label>
+                <input type="date" id="challenge-deadline" />
+              </div>
+              <div class="form-group">
+                <label for="challenge-desc">Description</label>
+                <textarea id="challenge-desc" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="challenge-image">Image URL (Optional)</label>
+                <input
+                  type="url"
+                  id="challenge-image"
+                  placeholder="https://example.com/image.jpg"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Add Challenge
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <!-- Marketplace -->
+      <section id="marketplace">
+        <div class="section-container">
+          <div class="section-header">
+            <h2 class="section-title" id="marketplace-title">Our Shop</h2>
+            <p class="section-subtitle">Things we create &amp; sell</p>
+          </div>
+          <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="all-product">
+              Semua
+            </button>
+            <button class="filter-tab" data-filter="available">Tersedia</button>
+            <button class="filter-tab" data-filter="sold">Terjual</button>
+            <button class="filter-tab" data-filter="reserved">Dipesan</button>
+          </div>
+          <div class="item-list" id="product-list"></div>
+          <div class="form-card">
+            <h3 class="form-title">Add Product</h3>
+            <form id="product-form">
+              <div class="grid-2col">
+                <div class="form-group">
+                  <label for="product-name">Product Name</label>
+                  <input
+                    type="text"
+                    id="product-name"
+                    required
+                    placeholder="e.g., Custom Artwork"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="product-price">Price (Rp)</label>
+                  <input
+                    type="number"
+                    id="product-price"
+                    required
+                    placeholder="0"
+                  />
+                </div>
+              </div>
+              <div class="grid-2col">
+                <div class="form-group">
+                  <label for="product-category">Category</label>
+                  <select id="product-category" required>
+                    <option value="art">🎨 Art &amp; Design</option>
+                    <option value="craft">✂️ Craft</option>
+                    <option value="music">🎵 Music</option>
+                    <option value="digital">💻 Digital</option>
+                    <option value="other">🌟 Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="product-status">Status</label>
+                  <select id="product-status" required>
+                    <option value="available">✅ Available</option>
+                    <option value="sold">💰 Sold</option>
+                    <option value="reserved">��� Reserved</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="product-desc">Description</label>
+                <textarea id="product-desc" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="product-image">Image URL (Optional)</label>
+                <input
+                  type="url"
+                  id="product-image"
+                  placeholder="https://example.com/image.jpg"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Add Product</button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <!-- Mood Tracker -->
+      <section id="mood">
+        <div class="section-container">
+          <div class="section-header">
+            <h2 class="section-title" id="mood-title">Mood Tracker</h2>
+            <p class="section-subtitle">How are we feeling today?</p>
+          </div>
+          <div class="form-card">
+            <h3 class="form-title">Track Mood</h3>
+            <div class="mood-selector">
+              <button type="button" class="mood-btn" data-mood="😊">😊</button>
+              <button type="button" class="mood-btn" data-mood="😍">😍</button>
+              <button type="button" class="mood-btn" data-mood="😎">😎</button>
+              <button type="button" class="mood-btn" data-mood="😢">😢</button>
+              <button type="button" class="mood-btn" data-mood="😴">😴</button>
+              <button type="button" class="mood-btn" data-mood="🤔">🤔</button>
+              <button type="button" class="mood-btn" data-mood="😤">���</button>
+              <button type="button" class="mood-btn" data-mood="🥳">🥳</button>
+            </div>
+            <form id="mood-form">
+              <div class="form-group">
+                <label for="mood-person">Who?</label>
+                <select id="mood-person" required>
+                  <option value="Iluze">Iluze</option>
+                  <option value="Che">Che</option>
+                  <option value="Both">Both</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="mood-note">Note</label>
+                <textarea
+                  id="mood-note"
+                  placeholder="How are you feeling?"
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Save Mood</button>
+            </form>
+          </div>
+          <div class="item-list" id="mood-list" style="margin-top: 2rem"></div>
+        </div>
+      </section>
+      <!-- Diary -->
+      <section id="diary">
+        <div class="section-container">
+          <div class="section-header">
+            <h2 class="section-title" id="diary-title">Our Diary</h2>
+            <p class="section-subtitle">Moments we want to remember</p>
+          </div>
+          <div id="diary-list"></div>
+          <div class="form-card">
+            <h3 class="form-title">Write Diary Entry</h3>
+            <form id="diary-form">
+              <div class="grid-2col">
+                <div class="form-group">
+                  <label for="diary-title">Title</label>
+                  <input
+                    type="text"
+                    id="diary-title"
+                    required
+                    placeholder="Today's moment"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="diary-date">Date</label>
+                  <input type="date" id="diary-date" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="diary-content">Story</label>
+                <textarea
+                  id="diary-content"
+                  required
+                  placeholder="Write about today..."
+                  style="min-height: 150px"
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label for="diary-lyrics">Quote / Lyrics (Optional)</label>
+                <textarea
+                  id="diary-lyrics"
+                  placeholder="Any favorite quote or lyric?"
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label for="diary-image">Image URL (Optional)</label>
+                <input
+                  type="url"
+                  id="diary-image"
+                  placeholder="https://example.com/image.jpg"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Save Entry</button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <!-- Finance -->
+      <section id="finance">
+        <div class="section-container">
+          <div class="section-header">
+            <h2 class="section-title" id="finance-title">Our Finances</h2>
+            <p class="section-subtitle">Money management together</p>
+          </div>
+          <div class="finance-summary">
+            <div class="finance-card">
+              <div class="finance-label">Total Pemasukan</div>
+              <div class="finance-value positive" id="total-income">Rp 0</div>
+            </div>
+            <div class="finance-card">
+              <div class="finance-label">Total Pengeluaran</div>
+              <div class="finance-value negative" id="total-expense">Rp 0</div>
+            </div>
+            <div class="finance-card">
+              <div class="finance-label">Saldo</div>
+              <div class="finance-value neutral" id="balance">Rp 0</div>
+            </div>
+          </div>
+          <div class="form-card">
+            <h3 class="form-title">Grafik</h3>
+            <div class="filter-tabs" style="margin-bottom: 1.5rem">
+              <button class="filter-tab active" data-chart-filter="7">
+                7 Hari
+              </button>
+              <button class="filter-tab" data-chart-filter="30">30 Hari</button>
+              <button class="filter-tab" data-chart-filter="90">90 Hari</button>
+            </div>
+            <canvas id="finance-chart"></canvas>
+          </div>
+          <div class="form-card">
+            <h3 class="form-title">Add Transaction</h3>
+            <form id="finance-form">
+              <div class="grid-2col">
+                <div class="form-group">
+                  <label for="finance-type">Type</label>
+                  <select id="finance-type" required>
+                    <option value="income">💰 Income</option>
+                    <option value="expense">💸 Expense</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="finance-amount">Amount (Rp)</label>
+                  <input
+                    type="number"
+                    id="finance-amount"
+                    required
+                    placeholder="0"
+                  />
+                </div>
+              </div>
+              <div class="grid-2col">
+                <div class="form-group">
+                  <label for="finance-category">Category</label>
+                  <select id="finance-category" required>
+                    <option value="marketplace">🛍️ Marketplace</option>
+                    <option value="food">🍔 Food</option>
+                    <option value="transport">🚗 Transport</option>
+                    <option value="entertainment">🎬 Entertainment</option>
+                    <option value="trip">✈️ Trip</option>
+                    <option value="hobby">🎨 Hobby</option>
+                    <option value="other">💼 Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="finance-person">Who?</label>
+                  <select id="finance-person" required>
+                    <option value="Iluze">💙 Iluze</option>
+                    <option value="Che">💖 Che</option>
+                    <option value="Both">👫 Both</option>
+                  </select>
+                </div>
+              </div>
+              <div class="grid-2col">
+                <div class="form-group">
+                  <label for="finance-date">Date</label>
+                  <input type="date" id="finance-date" required />
+                </div>
+                <div></div>
+              </div>
+              <div class="form-group">
+                <label for="finance-desc">Description</label>
+                <input
+                  type="text"
+                  id="finance-desc"
+                  required
+                  placeholder="What is this for?"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Add Transaction
+              </button>
+            </form>
+          </div>
+          <div class="filter-tabs" style="margin-top: 3rem">
+            <button class="filter-tab active" data-filter="all-finance">
+              Semua
+            </button>
+            <button class="filter-tab" data-filter="income">Pemasukan</button>
+            <button class="filter-tab" data-filter="expense">
+              Pengeluaran
+            </button>
+            <button class="filter-tab" data-filter="iluze">💙 Iluze</button>
+            <button class="filter-tab" data-filter="che">💖 Che</button>
+            <button class="filter-tab" data-filter="both">👫 Berdua</button>
+          </div>
+          <div class="item-list" id="finance-list"></div>
+        </div>
+      </section>
+      <!-- Goals -->
+      <section id="goals">
+        <div class="section-container">
+          <div class="section-header">
+            <h2 class="section-title" id="goals-title">Our Goals</h2>
+            <p class="section-subtitle">Dreams we'll achieve together</p>
+          </div>
+          <div class="item-list" id="goals-list"></div>
+          <div class="form-card">
+            <h3 class="form-title">Add New Goal</h3>
+            <form id="goal-form">
+              <div class="grid-2col">
+                <div class="form-group">
+                  <label for="goal-title">Goal Title</label>
+                  <input
+                    type="text"
+                    id="goal-title"
+                    required
+                    placeholder="e.g., Trip to Japan"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="goal-category">Category</label>
+                  <select id="goal-category" required>
+                    <option value="travel">✈️ Travel</option>
+                    <option value="milestone">��� Milestone</option>
+                    <option value="experience">🎉 Experience</option>
+                    <option value="learning">📚 Learning</option>
+                    <option value="adventure">🏔️ Adventure</option>
+                    <option value="other">💫 Other</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="goal-desc">Description</label>
+                <textarea
+                  id="goal-desc"
+                  required
+                  placeholder="What do we want to achieve?"
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label for="goal-image">Image URL (Optional)</label>
+                <input
+                  type="url"
+                  id="goal-image"
+                  placeholder="https://example.com/image.jpg"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Add Goal</button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <!-- Messages -->
+      <section id="messages">
+        <div class="section-container">
+          <div class="section-header">
+            <h2 class="section-title" id="messages-title">Love Notes</h2>
+            <p class="section-subtitle">Sweet messages for each other</p>
+          </div>
+          <div
+            id="messages-list"
+            style="max-width: 800px; margin: 0 auto 3rem"
+          ></div>
+          <div class="form-card" style="max-width: 600px; margin: 0 auto">
+            <h3 class="form-title">Send a Love Note</h3>
+            <form id="message-form">
+              <div class="form-group">
+                <label for="message-from">From</label>
+                <select id="message-from" required>
+                  <option value="Iluze">💙 Iluze</option>
+                  <option value="Che">💖 Che</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message-text">Your Message</label>
+                <textarea
+                  id="message-text"
+                  required
+                  placeholder="Write something sweet..."
+                  style="min-height: 120px"
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">
+                💌 Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script>
+      const defaultConfig = {
+        hero_title: "Iluze & Che",
+        hero_subtitle: "Our Digital Love Story",
+        story_title: "Our Story",
+        hobbies_title: "Our Hobbies",
+        travel_title: "Travel Plans",
+        challenge_title: "Our Challenges",
+        marketplace_title: "Our Shop",
+        mood_title: "Mood Tracker",
+        diary_title: "Our Diary",
+        finance_title: "Our Finances",
+        goals_title: "Our Goals",
+        messages_title: "Love Notes",
+        primary_color: "#ec4899",
+        secondary_color: "#8b5cf6",
+        background_color: "#fce7f3",
+        surface_color: "#ffffff",
+        text_color: "#1f2937",
+        font_family: "Inter",
+        font_size: 16,
+      };
+
+      // Sample data dengan contoh lengkap
+      let allData = [
+        // Story moments
+        {
+          id: "story1",
+          type: "story",
+          date: "2025-01-01",
+          title: "Hari Pertama Kita",
+          description:
+            "Hari di mana semuanya dimulai. Aku masih ingat senyumanmu yang pertama kali.",
+          emoji: "💕",
+          imageUrl: "WhatsApp Image 2025-11-29 at 19.51.19.jpeg",
+          createdAt: new Date("2025-01-01").toISOString(),
+        },
+        {
+          id: "story2",
+          type: "story",
+          date: "2025-02-14",
+          title: "Valentine Pertama",
+          description:
+            "Perayaan cinta pertama kita bersama. Penuh kehangatan dan tawa.",
+          emoji: "🌹",
+          imageUrl:
+            "https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=800&q=80",
+          createdAt: new Date("2025-02-14").toISOString(),
+        },
+        {
+          id: "story3",
+          type: "story",
+          date: "2025-06-15",
+          title: "Liburan ke Pantai",
+          description:
+            "Matahari terbenam yang indah, pasir putih, dan kita berdua.",
+          emoji: "🏖️",
+          imageUrl:
+            "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
+          createdAt: new Date("2025-06-15").toISOString(),
+        },
+        // Hobbies
+        {
+          id: "hobby1",
+          type: "hobby",
+          title: "Belajar Gitar Bersama",
+          description:
+            "Iluze ngajarin Che main gitar. Sekarang udah bisa beberapa chord!",
+          category: "music",
+          person: "Both",
+          progress: 45,
+          imageUrl:
+            "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800&q=80",
+          createdAt: new Date("2025-03-10").toISOString(),
+        },
+        {
+          id: "hobby2",
+          type: "hobby",
+          title: "Melukis Digital",
+          description:
+            "Che lagi belajar digital painting. Udah bikin beberapa artwork!",
+          category: "art",
+          person: "Che",
+          progress: 60,
+          imageUrl:
+            "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800&q=80",
+          createdAt: new Date("2025-04-05").toISOString(),
+        },
+        {
+          id: "hobby3",
+          type: "hobby",
+          title: "Proyek Coding",
+          description: "Iluze lagi develop aplikasi keren. Hampir selesai!",
+          category: "coding",
+          person: "Iluze",
+          progress: 75,
+          imageUrl:
+            "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80",
+          createdAt: new Date("2025-05-20").toISOString(),
+        },
+        // Travel plans
+        {
+          id: "travel1",
+          type: "travel",
+          title: "Tokyo, Japan",
+          date: "2025-12-20",
+          amount: 25000000,
+          status: "upcoming",
+          notes: "Shibuya crossing, Tokyo Tower, cherry blossoms!",
+          imageUrl:
+            "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&q=80",
+          createdAt: new Date("2025-07-01").toISOString(),
+        },
+        {
+          id: "travel2",
+          type: "travel",
+          title: "Yogyakarta",
+          date: "2024-08-15",
+          amount: 3000000,
+          status: "completed",
+          notes: "Borobudur, Prambanan, kuliner enak!",
+          imageUrl:
+            "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=800&q=80",
+          createdAt: new Date("2024-07-05").toISOString(),
+        },
+        {
+          id: "travel3",
+          type: "travel",
+          title: "Bali",
+          date: "2024-11-10",
+          amount: 5000000,
+          status: "upcoming",
+          notes: "Pantai Kuta, Ubud, Tanah Lot sunset!",
+          imageUrl:
+            "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80",
+          createdAt: new Date("2024-07-10").toISOString(),
+        },
+        {
+          id: "travel4",
+          type: "travel",
+          title: "Bandung",
+          date: "2024-09-05",
+          amount: 2000000,
+          status: "ongoing",
+          notes: "Wisata kuliner, belanja factory outlet, foto di spot kece!",
+          imageUrl:
+            "https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?w=800&q=80",
+          createdAt: new Date("2024-07-15").toISOString(),
+        },
+        {
+          id: "travel5",
+          type: "travel",
+          title: "Seoul, Korea",
+          date: "2025-03-15",
+          amount: 30000000,
+          status: "upcoming",
+          notes: "Myeongdong shopping, Namsan Tower, Korean food tour!",
+          imageUrl:
+            "https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=800&q=80",
+          createdAt: new Date("2024-07-20").toISOString(),
+        },
+        // Challenges
+        {
+          id: "challenge1",
+          type: "challenge",
+          title: "Baca 10 Buku",
+          description: "Target baca 10 buku bareng di tahun ini",
+          status: "active",
+          priority: "medium",
+          progress: 60,
+          date: "2024-12-31",
+          imageUrl:
+            "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800&q=80",
+          createdAt: new Date("2025-01-15").toISOString(),
+        },
+        {
+          id: "challenge2",
+          type: "challenge",
+          title: "No Social Media Weekend",
+          description: "Setiap weekend fokus quality time tanpa sosmed",
+          status: "active",
+          priority: "high",
+          progress: 30,
+          date: null,
+          imageUrl:
+            "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&q=80",
+          createdAt: new Date("2024-06-01").toISOString(),
+        },
+        {
+          id: "challenge3",
+          type: "challenge",
+          title: "Olahraga 3x Seminggu",
+          description: "Rutin olahraga bareng minimal 3x seminggu",
+          status: "active",
+          priority: "high",
+          progress: 45,
+          date: "2024-12-31",
+          imageUrl:
+            "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80",
+          createdAt: new Date("2024-02-01").toISOString(),
+        },
+        {
+          id: "challenge4",
+          type: "challenge",
+          title: "Masak Meal Prep Setiap Minggu",
+          description: "Meal prep bareng setiap hari Minggu untuk seminggu",
+          status: "active",
+          priority: "medium",
+          progress: 70,
+          date: null,
+          imageUrl:
+            "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&q=80",
+          createdAt: new Date("2024-03-10").toISOString(),
+        },
+        {
+          id: "challenge5",
+          type: "challenge",
+          title: "Belajar Bahasa Korea",
+          description:
+            "Belajar 30 menit setiap hari sampai bisa basic conversation",
+          status: "active",
+          priority: "medium",
+          progress: 35,
+          date: "2025-06-01",
+          imageUrl:
+            "https://images.unsplash.com/photo-1565116778000-644511781e2b?w=800&q=80",
+          createdAt: new Date("2024-04-01").toISOString(),
+        },
+        {
+          id: "challenge6",
+          type: "challenge",
+          title: "Nabung Rp 10 Juta",
+          description: "Target nabung bareng untuk dana liburan ke Jepang",
+          status: "active",
+          priority: "high",
+          progress: 55,
+          date: "2024-11-30",
+          imageUrl:
+            "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&q=80",
+          createdAt: new Date("2024-05-01").toISOString(),
+        },
+        {
+          id: "challenge7",
+          type: "challenge",
+          title: "Date Night Setiap Jumat",
+          description: "Wajib quality time date setiap hari Jumat",
+          status: "active",
+          priority: "high",
+          progress: 80,
+          date: null,
+          imageUrl:
+            "https://images.unsplash.com/photo-1511988617509-a57c8a288659?w=800&q=80",
+          createdAt: new Date("2024-01-05").toISOString(),
+        },
+        {
+          id: "challenge8",
+          type: "challenge",
+          title: "Bikin 20 Lagu Bareng",
+          description: "Kolaborasi bikin musik, target 20 lagu original",
+          status: "active",
+          priority: "medium",
+          progress: 25,
+          date: "2025-12-31",
+          imageUrl:
+            "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800&q=80",
+          createdAt: new Date("2024-06-15").toISOString(),
+        },
+        {
+          id: "challenge9",
+          type: "challenge",
+          title: "Kurangi Jajan 50%",
+          description: "Challenge hemat dengan kurangi jajan di luar",
+          status: "active",
+          priority: "low",
+          progress: 40,
+          date: "2024-09-30",
+          imageUrl:
+            "https://images.unsplash.com/photo-1554224311-beee2ade6391?w=800&q=80",
+          createdAt: new Date("2024-07-01").toISOString(),
+        },
+        {
+          id: "challenge10",
+          type: "challenge",
+          title: "Morning Routine Bareng",
+          description: "Bangun pagi dan sarapan bareng setiap hari",
+          status: "completed",
+          priority: "medium",
+          progress: 100,
+          date: "2024-06-30",
+          imageUrl:
+            "https://images.unsplash.com/photo-1495522446153-384a7e5c3f00?w=800&q=80",
+          createdAt: new Date("2024-03-01").toISOString(),
+        },
+        // Products
+        {
+          id: "product1",
+          type: "product",
+          title: "Custom Portrait Digital",
+          description:
+            "Lukisan digital custom wajah couple. Detail & berkualitas!",
+          amount: 150000,
+          status: "available",
+          category: "art",
+          imageUrl:
+            "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&q=80",
+          createdAt: new Date("2024-05-10").toISOString(),
+        },
+        {
+          id: "product2",
+          type: "product",
+          title: "Handmade Bookmark",
+          description: "Bookmark cantik handmade dengan design unik",
+          amount: 25000,
+          status: "sold",
+          category: "craft",
+          imageUrl:
+            "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=800&q=80",
+          createdAt: new Date("2024-04-20").toISOString(),
+        },
+        // Moods
+        {
+          id: "mood1",
+          type: "mood",
+          mood: "😍",
+          description: "Hari yang menyenangkan! Quality time bareng maksimal",
+          person: "Both",
+          date: new Date().toISOString().split("T")[0],
+          createdAt: new Date().toISOString(),
+        },
+        {
+          id: "mood2",
+          type: "mood",
+          mood: "🥳",
+          description: "Excited banget hari ini! Ada kabar baik",
+          person: "Iluze",
+          date: new Date(Date.now() - 86400000).toISOString().split("T")[0],
+          createdAt: new Date(Date.now() - 86400000).toISOString(),
+        },
+        // Diary
+        {
+          id: "diary1",
+          type: "diary",
+          title: "Hari Spesial Bersama",
+          description:
+            "Hari ini kami nonton film favorit bareng, makan di restoran baru yang cozy banget. Ngobrol sampai larut malam tentang mimpi-mimpi kita. Momen sederhana tapi sangat berarti.",
+          lyrics: "You are the best thing that ever happened to me",
+          date: new Date().toISOString().split("T")[0],
+          imageUrl:
+            "https://images.unsplash.com/photo-1511988617509-a57c8a288659?w=800&q=80",
+          createdAt: new Date().toISOString(),
+        },
+        {
+          id: "diary2",
+          type: "diary",
+          title: "Malam Penuh Bintang",
+          description:
+            "Malam ini kita lihat bintang dari rooftop. Udaranya dingin tapi hati hangat. Aku bersyukur punya kamu.",
+          lyrics: "All of me loves all of you",
+          date: new Date(Date.now() - 172800000).toISOString().split("T")[0],
+          imageUrl:
+            "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80",
+          createdAt: new Date(Date.now() - 172800000).toISOString(),
+        },
+        // Finance
+        {
+          id: "finance1",
+          type: "finance",
+          category: "income",
+          title: "Jual Artwork",
+          financeCategory: "marketplace",
+          amount: 150000,
+          person: "Che",
+          date: new Date(Date.now() - 86400000).toISOString().split("T")[0],
+          createdAt: new Date(Date.now() - 86400000).toISOString(),
+        },
+        {
+          id: "finance2",
+          type: "finance",
+          category: "expense",
+          title: "Makan Malam",
+          financeCategory: "food",
+          amount: 150000,
+          person: "Both",
+          date: new Date().toISOString().split("T")[0],
+          createdAt: new Date().toISOString(),
+        },
+        {
+          id: "finance3",
+          type: "finance",
+          category: "income",
+          title: "Freelance Project",
+          financeCategory: "digital",
+          amount: 500000,
+          person: "Iluze",
+          date: new Date(Date.now() - 259200000).toISOString().split("T")[0],
+          createdAt: new Date(Date.now() - 259200000).toISOString(),
+        },
+        {
+          id: "finance4",
+          type: "finance",
+          category: "expense",
+          title: "Nonton Bioskop",
+          financeCategory: "entertainment",
+          amount: 100000,
+          person: "Both",
+          date: new Date(Date.now() - 345600000).toISOString().split("T")[0],
+          createdAt: new Date(Date.now() - 345600000).toISOString(),
+        },
+        // Goals
+        {
+          id: "goal1",
+          type: "goal",
+          title: "Liburan ke Jepang",
+          description: "Impian kita untuk jalan-jalan ke negeri sakura bersama",
+          category: "travel",
+          completed: false,
+          imageUrl:
+            "https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=800&q=80",
+          createdAt: new Date("2024-02-01").toISOString(),
+        },
+        {
+          id: "goal2",
+          type: "goal",
+          title: "Belajar Bahasa Korea",
+          description: "Pengen bisa ngomong Korea bareng-bareng",
+          category: "learning",
+          completed: false,
+          imageUrl:
+            "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=800&q=80",
+          createdAt: new Date("2024-03-15").toISOString(),
+        },
+        // Messages
+        {
+          id: "message1",
+          type: "message",
+          from: "Iluze",
+          message:
+            "Che, thank you udah selalu ada buat aku. Kamu bikin hari-hariku jadi lebih berwarna. Love you! 💙",
+          date: new Date(Date.now() - 86400000).toISOString().split("T")[0],
+          createdAt: new Date(Date.now() - 86400000).toISOString(),
+        },
+        {
+          id: "message2",
+          type: "message",
+          from: "Che",
+          message:
+            "Iluze, aku sayang banget sama kamu. Makasih udah jadi support system terbaik. You mean the world to me! ��",
+          date: new Date().toISOString().split("T")[0],
+          createdAt: new Date().toISOString(),
+        },
+      ];
+
+      let selectedMood = null;
+      let currentFilter = "all";
+      let currentChallengeFilter = "all-challenge";
+      let currentProductFilter = "all-product";
+      let currentFinanceFilter = "all-finance";
+      let chartDays = 7;
+      const startDate = new Date("2024-01-01");
+
+      function saveData() {
+        localStorage.setItem("loveJournalData", JSON.stringify(allData));
+      }
+
+      function loadData() {
+        const saved = localStorage.getItem("loveJournalData");
+        if (saved) {
+          allData = JSON.parse(saved);
+        }
+      }
+
+      function initializeApp() {
+        loadData();
+
+        if (window.elementSdk) {
+          window.elementSdk.init({
+            defaultConfig,
+            onConfigChange: async (config) => {
+              document.getElementById("hero-title").textContent =
+                config.hero_title || defaultConfig.hero_title;
+              document.getElementById("hero-subtitle").textContent =
+                config.hero_subtitle || defaultConfig.hero_subtitle;
+              document.getElementById("story-title").textContent =
+                config.story_title || defaultConfig.story_title;
+              document.getElementById("hobbies-title").textContent =
+                config.hobbies_title || defaultConfig.hobbies_title;
+              document.getElementById("travel-title").textContent =
+                config.travel_title || defaultConfig.travel_title;
+              document.getElementById("challenge-title").textContent =
+                config.challenge_title || defaultConfig.challenge_title;
+              document.getElementById("marketplace-title").textContent =
+                config.marketplace_title || defaultConfig.marketplace_title;
+              document.getElementById("mood-title").textContent =
+                config.mood_title || defaultConfig.mood_title;
+              document.getElementById("diary-title").textContent =
+                config.diary_title || defaultConfig.diary_title;
+              document.getElementById("finance-title").textContent =
+                config.finance_title || defaultConfig.finance_title;
+              document.getElementById("goals-title").textContent =
+                config.goals_title || defaultConfig.goals_title;
+              document.getElementById("messages-title").textContent =
+                config.messages_title || defaultConfig.messages_title;
+
+              const customFont =
+                config.font_family || defaultConfig.font_family;
+              const baseSize = config.font_size || defaultConfig.font_size;
+              const baseFontStack =
+                '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+
+              document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+              document.body.style.fontSize = `${baseSize}px`;
+
+              const primaryColor =
+                config.primary_color || defaultConfig.primary_color;
+              const secondaryColor =
+                config.secondary_color || defaultConfig.secondary_color;
+              const bgColor =
+                config.background_color || defaultConfig.background_color;
+              const surfaceColor =
+                config.surface_color || defaultConfig.surface_color;
+              const textColor = config.text_color || defaultConfig.text_color;
+
+              document.body.style.background = `linear-gradient(135deg, ${bgColor} 0%, ${secondaryColor}20 50%, ${secondaryColor}30 100%)`;
+              document.body.style.color = textColor;
+
+              const styleElement = document.createElement("style");
+              styleElement.textContent = `
+              .hero h1, .section-title, .logo, .stat-value, .countdown-value {
+                background: linear-gradient(135deg, ${primaryColor} 0%, ${secondaryColor} 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+              }
+              .btn-primary, .toast, .filter-tab.active {
+                background: linear-gradient(135deg, ${primaryColor} 0%, ${secondaryColor} 100%);
+              }
+              .nav-links a::after {
+                background: linear-gradient(135deg, ${primaryColor} 0%, ${secondaryColor} 100%);
+              }
+              .nav-links a:hover, .timeline-date {
+                color: ${primaryColor};
+              }
+              .particle {
+                background: ${primaryColor}4d;
+              }
+              nav {
+                background: ${surfaceColor}cc;
+              }
+              input:focus, textarea:focus, select:focus {
+                border-color: ${primaryColor};
+                box-shadow: 0 0 0 4px ${primaryColor}1a;
+              }
+              input, textarea, select {
+                border-color: ${primaryColor}33;
+                background: ${surfaceColor}cc;
+              }
+              .item {
+                border-left-color: ${primaryColor};
+              }
+              .mood-btn.selected {
+                border-color: ${primaryColor};
+                background: ${primaryColor}26;
+              }
+              .progress-bar {
+                background: linear-gradient(90deg, ${primaryColor} 0%, ${secondaryColor} 100%);
+              }
+              .meta-tag {
+                background: ${primaryColor}1a;
+                color: ${primaryColor};
+              }
+            `;
+              const oldStyle = document.getElementById("dynamic-styles");
+              if (oldStyle) oldStyle.remove();
+              styleElement.id = "dynamic-styles";
+              document.head.appendChild(styleElement);
+            },
+            mapToCapabilities: (config) => ({
+              recolorables: [
+                {
+                  get: () =>
+                    config.background_color || defaultConfig.background_color,
+                  set: (value) => {
+                    if (window.elementSdk) {
+                      window.elementSdk.setConfig({ background_color: value });
+                    }
+                  },
+                },
+                {
+                  get: () =>
+                    config.surface_color || defaultConfig.surface_color,
+                  set: (value) => {
+                    if (window.elementSdk) {
+                      window.elementSdk.setConfig({ surface_color: value });
+                    }
+                  },
+                },
+                {
+                  get: () => config.text_color || defaultConfig.text_color,
+                  set: (value) => {
+                    if (window.elementSdk) {
+                      window.elementSdk.setConfig({ text_color: value });
+                    }
+                  },
+                },
+                {
+                  get: () =>
+                    config.primary_color || defaultConfig.primary_color,
+                  set: (value) => {
+                    if (window.elementSdk) {
+                      window.elementSdk.setConfig({ primary_color: value });
+                    }
+                  },
+                },
+                {
+                  get: () =>
+                    config.secondary_color || defaultConfig.secondary_color,
+                  set: (value) => {
+                    if (window.elementSdk) {
+                      window.elementSdk.setConfig({ secondary_color: value });
+                    }
+                  },
+                },
+              ],
+              borderables: [],
+              fontEditable: {
+                get: () => config.font_family || defaultConfig.font_family,
+                set: (value) => {
+                  if (window.elementSdk) {
+                    window.elementSdk.setConfig({ font_family: value });
+                  }
+                },
+              },
+              fontSizeable: {
+                get: () => config.font_size || defaultConfig.font_size,
+                set: (value) => {
+                  if (window.elementSdk) {
+                    window.elementSdk.setConfig({ font_size: value });
+                  }
+                },
+              },
+            }),
+            mapToEditPanelValues: (config) =>
+              new Map([
+                ["hero_title", config.hero_title || defaultConfig.hero_title],
+                [
+                  "hero_subtitle",
+                  config.hero_subtitle || defaultConfig.hero_subtitle,
+                ],
+                [
+                  "story_title",
+                  config.story_title || defaultConfig.story_title,
+                ],
+                [
+                  "hobbies_title",
+                  config.hobbies_title || defaultConfig.hobbies_title,
+                ],
+                [
+                  "travel_title",
+                  config.travel_title || defaultConfig.travel_title,
+                ],
+                [
+                  "challenge_title",
+                  config.challenge_title || defaultConfig.challenge_title,
+                ],
+                [
+                  "marketplace_title",
+                  config.marketplace_title || defaultConfig.marketplace_title,
+                ],
+                ["mood_title", config.mood_title || defaultConfig.mood_title],
+                [
+                  "diary_title",
+                  config.diary_title || defaultConfig.diary_title,
+                ],
+                [
+                  "finance_title",
+                  config.finance_title || defaultConfig.finance_title,
+                ],
+                [
+                  "goals_title",
+                  config.goals_title || defaultConfig.goals_title,
+                ],
+                [
+                  "messages_title",
+                  config.messages_title || defaultConfig.messages_title,
+                ],
+              ]),
+          });
+        }
+
+        setupParticles();
+        setupNavigation();
+        setupForms();
+        setupMoodButtons();
+        setupFilters();
+        setDefaultDates();
+        updateDashboard();
+        renderAll();
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+      }
+
+      function setupParticles() {
+        const container = document.getElementById("particles");
+        for (let i = 0; i < 20; i++) {
+          const particle = document.createElement("div");
+          particle.className = "particle";
+          particle.style.left = `${Math.random() * 100}%`;
+          particle.style.animationDelay = `${Math.random() * 20}s`;
+          particle.style.animationDuration = `${15 + Math.random() * 10}s`;
+          container.appendChild(particle);
+        }
+      }
+
+      function setupNavigation() {
+        const nav = document.getElementById("nav");
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 50) {
+            nav.classList.add("scrolled");
+          } else {
+            nav.classList.remove("scrolled");
+          }
+        });
+
+        document.querySelectorAll(".nav-links a").forEach((link) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const target = document.querySelector(link.getAttribute("href"));
+            if (target) {
+              target.scrollIntoView({ behavior: "smooth" });
+            }
+          });
+        });
+      }
+
+      function setDefaultDates() {
+        const today = new Date().toISOString().split("T")[0];
+        const dateInputs = ["travel-date", "diary-date", "finance-date"];
+        dateInputs.forEach((id) => {
+          const input = document.getElementById(id);
+          if (input) input.value = today;
+        });
+      }
+
+      function setupMoodButtons() {
+        document.querySelectorAll(".mood-btn").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            document
+              .querySelectorAll(".mood-btn")
+              .forEach((b) => b.classList.remove("selected"));
+            btn.classList.add("selected");
+            selectedMood = btn.dataset.mood;
+          });
+        });
+      }
+
+      function setupFilters() {
+        document.querySelectorAll(".filter-tab").forEach((tab) => {
+          tab.addEventListener("click", () => {
+            const filter = tab.dataset.filter;
+            const chartFilter = tab.dataset.chartFilter;
+            const parent = tab.parentElement;
+
+            parent
+              .querySelectorAll(".filter-tab")
+              .forEach((t) => t.classList.remove("active"));
+            tab.classList.add("active");
+
+            if (chartFilter) {
+              chartDays = parseInt(chartFilter);
+              renderFinanceChart();
+            } else if (filter && filter.includes("challenge")) {
+              currentChallengeFilter = filter;
+              renderChallenges();
+            } else if (filter && filter.includes("product")) {
+              currentProductFilter = filter;
+              renderProducts();
+            } else if (filter && filter.includes("finance")) {
+              currentFinanceFilter = filter;
+              renderFinance();
+            } else if (filter) {
+              currentFilter = filter;
+              renderTravel();
+            }
+          });
+        });
+      }
+
+      function setupForms() {
+        document
+          .getElementById("story-form")
+          .addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const imageUrl = document.getElementById("story-image").value;
+
+            allData.push({
+              id: Date.now().toString(),
+              type: "story",
+              date: document.getElementById("story-date").value,
+              title: document.getElementById("story-title").value,
+              description: document.getElementById("story-desc").value,
+              emoji: document.getElementById("story-emoji").value,
+              imageUrl: imageUrl || null,
+              createdAt: new Date().toISOString(),
+            });
+
+            saveData();
+            e.target.reset();
+            renderTimeline();
+            showToast("Kenangan berhasil ditambahkan! 💕");
+          });
+
+        document
+          .getElementById("hobby-form")
+          .addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const imageUrl = document.getElementById("hobby-image").value;
+
+            allData.push({
+              id: Date.now().toString(),
+              type: "hobby",
+              title: document.getElementById("hobby-title").value,
+              description: document.getElementById("hobby-desc").value,
+              category: document.getElementById("hobby-category").value,
+              person: document.getElementById("hobby-person").value,
+              progress:
+                parseInt(document.getElementById("hobby-progress").value) || 0,
+              imageUrl: imageUrl || null,
+              createdAt: new Date().toISOString(),
+            });
+
+            saveData();
+            e.target.reset();
+            updateDashboard();
+            renderHobbies();
+            showToast("Hobi berhasil ditambahkan!");
+          });
+
+        document
+          .getElementById("travel-form")
+          .addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const imageUrl = document.getElementById("travel-image").value;
+
+            allData.push({
+              id: Date.now().toString(),
+              type: "travel",
+              title: document.getElementById("travel-destination").value,
+              date: document.getElementById("travel-date").value,
+              amount: parseFloat(
+                document.getElementById("travel-budget").value
+              ),
+              status: document.getElementById("travel-status").value,
+              notes: document.getElementById("travel-notes").value,
+              imageUrl: imageUrl || null,
+              createdAt: new Date().toISOString(),
+            });
+
+            saveData();
+            e.target.reset();
+            setDefaultDates();
+            updateDashboard();
+            renderTravel();
+            showToast("Perjalanan berhasil ditambahkan!");
+          });
+
+        document
+          .getElementById("challenge-form")
+          .addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const imageUrl = document.getElementById("challenge-image").value;
+
+            allData.push({
+              id: Date.now().toString(),
+              type: "challenge",
+              title: document.getElementById("challenge-title").value,
+              description: document.getElementById("challenge-desc").value,
+              status: document.getElementById("challenge-status").value,
+              priority: document.getElementById("challenge-priority").value,
+              progress:
+                parseInt(document.getElementById("challenge-progress").value) ||
+                0,
+              date: document.getElementById("challenge-deadline").value || null,
+              imageUrl: imageUrl || null,
+              createdAt: new Date().toISOString(),
+            });
+
+            saveData();
+            e.target.reset();
+            updateDashboard();
+            renderChallenges();
+            showToast("Tantangan berhasil ditambahkan!");
+          });
+
+        document
+          .getElementById("product-form")
+          .addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const imageUrl = document.getElementById("product-image").value;
+
+            allData.push({
+              id: Date.now().toString(),
+              type: "product",
+              title: document.getElementById("product-name").value,
+              description: document.getElementById("product-desc").value,
+              amount: parseFloat(
+                document.getElementById("product-price").value
+              ),
+              status: document.getElementById("product-status").value,
+              category: document.getElementById("product-category").value,
+              imageUrl: imageUrl || null,
+              createdAt: new Date().toISOString(),
+            });
+
+            saveData();
+            e.target.reset();
+            renderProducts();
+            showToast("Produk berhasil ditambahkan!");
+          });
+
+        document.getElementById("mood-form").addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          if (!selectedMood) {
+            showToast("Pilih mood terlebih dahulu", true);
+            return;
+          }
+
+          allData.push({
+            id: Date.now().toString(),
+            type: "mood",
+            mood: selectedMood,
+            description: document.getElementById("mood-note").value,
+            person: document.getElementById("mood-person").value,
+            date: new Date().toISOString().split("T")[0],
+            createdAt: new Date().toISOString(),
+          });
+
+          saveData();
+          e.target.reset();
+          selectedMood = null;
+          document
+            .querySelectorAll(".mood-btn")
+            .forEach((btn) => btn.classList.remove("selected"));
+          renderMoods();
+          showToast("Mood berhasil disimpan!");
+        });
+
+        document
+          .getElementById("diary-form")
+          .addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            allData.push({
+              id: Date.now().toString(),
+              type: "diary",
+              title: document.getElementById("diary-title").value,
+              description: document.getElementById("diary-content").value,
+              lyrics: document.getElementById("diary-lyrics").value,
+              date: document.getElementById("diary-date").value,
+              createdAt: new Date().toISOString(),
+            });
+
+            saveData();
+            e.target.reset();
+            setDefaultDates();
+            renderDiary();
+            showToast("Diary berhasil disimpan!");
+          });
+
+        document
+          .getElementById("finance-form")
+          .addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            allData.push({
+              id: Date.now().toString(),
+              type: "finance",
+              category: document.getElementById("finance-type").value,
+              title: document.getElementById("finance-desc").value,
+              financeCategory:
+                document.getElementById("finance-category").value,
+              amount: parseFloat(
+                document.getElementById("finance-amount").value
+              ),
+              person: document.getElementById("finance-person").value,
+              date: document.getElementById("finance-date").value,
+              createdAt: new Date().toISOString(),
+            });
+
+            saveData();
+            e.target.reset();
+            setDefaultDates();
+            renderFinance();
+            showToast("Transaksi berhasil ditambahkan!");
+          });
+
+        document.getElementById("goal-form").addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          allData.push({
+            id: Date.now().toString(),
+            type: "goal",
+            title: document.getElementById("goal-title").value,
+            description: document.getElementById("goal-desc").value,
+            category: document.getElementById("goal-category").value,
+            completed: false,
+            createdAt: new Date().toISOString(),
+          });
+
+          saveData();
+          e.target.reset();
+          renderGoals();
+          showToast("Goal berhasil ditambahkan!");
+        });
+
+        document
+          .getElementById("message-form")
+          .addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            allData.push({
+              id: Date.now().toString(),
+              type: "message",
+              from: document.getElementById("message-from").value,
+              message: document.getElementById("message-text").value,
+              date: new Date().toISOString().split("T")[0],
+              createdAt: new Date().toISOString(),
+            });
+
+            saveData();
+            e.target.reset();
+            renderMessages();
+            showToast("Pesan berhasil dikirim! 💌");
+          });
+      }
+
+      function renderAll() {
+        renderTimeline();
+        renderHobbies();
+        renderTravel();
+        renderChallenges();
+        renderProducts();
+        renderMoods();
+        renderDiary();
+        renderFinance();
+        renderGoals();
+        renderMessages();
+      }
+
+      function updateCountdown() {
+        const now = new Date();
+        const diff = now - startDate;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        document.getElementById("days").textContent = days;
+      }
+
+      function updateDashboard() {
+        const hobbies = allData.filter((item) => item.type === "hobby");
+        const trips = allData.filter(
+          (item) => item.type === "travel" && item.status === "upcoming"
+        );
+        const challenges = allData.filter(
+          (item) => item.type === "challenge" && item.status === "active"
+        );
+
+        document.getElementById("total-hobbies").textContent = hobbies.length;
+        document.getElementById("upcoming-trips").textContent = trips.length;
+        document.getElementById("active-challenges").textContent =
+          challenges.length;
+      }
+
+      function renderTimeline() {
+        const timeline = document.getElementById("timeline");
+        const stories = allData
+          .filter((item) => item.type === "story")
+          .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+        if (stories.length === 0) {
+          timeline.innerHTML =
+            '<div class="empty-state"><div class="empty-icon">💕</div><p>No memories yet</p></div>';
+          return;
+        }
+
+        timeline.innerHTML = stories
+          .map(
+            (story) => `
+        <div class="timeline-card">
+          <div class="timeline-date">📆 ${formatDate(story.date)}</div>
+          <div class="timeline-icon">${story.emoji}</div>
+          <h3 class="timeline-title">${story.title}</h3>
+          <p class="timeline-desc">${story.description}</p>
+          ${
+            story.imageUrl
+              ? `<img src="${story.imageUrl}" alt="${story.title}" class="timeline-image" style="object-position: 50% 20%" onerror="this.style.display='none'; this.alt='Image failed to load';">`
+              : ""
+          }
+          <button class="btn btn-danger btn-small" onclick="deleteItem('${
+            story.id
+          }')">Delete</button>
+        </div>
+      `
+          )
+          .join("");
+      }
+
+      function renderHobbies() {
+        const list = document.getElementById("hobby-list");
+        const hobbies = allData.filter((item) => item.type === "hobby");
+
+        if (hobbies.length === 0) {
+          list.innerHTML =
+            '<div class="empty-state"><div class="empty-icon">��</div><p>No hobbies yet</p></div>';
+          return;
+        }
+
+        const categoryIcons = {
+          music: "��",
+          art: "🎨",
+          craft: "✂️",
+          coding: "��",
+          writing: "✍️",
+          other: "🌟",
+        };
+
+        list.innerHTML = hobbies
+          .map((hobby) => {
+            const icon = categoryIcons[hobby.category] || "🌟";
+            const progress = hobby.progress || 0;
+
+            return `
+          <div class="item">
+            <div class="item-content">
+              <div class="item-title">${hobby.title}</div>
+              <div class="item-desc">${hobby.description}</div>
+              ${
+                hobby.imageUrl
+                  ? `<img src="${hobby.imageUrl}" alt="${hobby.title}" class="item-image" onerror="this.style.display='none'; this.alt='Gambar gagal dimuat';">`
+                  : ""
+              }
+              <div class="item-meta">
+                <span class="meta-tag">${icon} ${hobby.category}</span>
+                <span class="meta-tag">👤 ${hobby.person}</span>
+                <span class="meta-tag">📊 ${progress}%</span>
+              </div>
+              <div class="progress-bar-container">
+                <div class="progress-bar" style="width: ${progress}%"></div>
+              </div>
+            </div>
+            <div class="item-actions">
+              <button class="btn btn-success btn-small" onclick="updateProgress('${
+                hobby.id
+              }', ${Math.min(progress + 10, 100)})">+10%</button>
+              <button class="btn btn-danger btn-small" onclick="deleteItem('${
+                hobby.id
+              }')">Hapus</button>
+            </div>
+          </div>
+        `;
+          })
+          .join("");
+      }
+
+      function renderTravel() {
+        const list = document.getElementById("travel-list");
+        let trips = allData.filter((item) => item.type === "travel");
+
+        if (currentFilter !== "all") {
+          trips = trips.filter((t) => t.status === currentFilter);
+        }
+
+        if (trips.length === 0) {
+          list.innerHTML =
+            '<div class="empty-state"><div class="empty-icon">✈️</div><p>No trips yet</p></div>';
+          return;
+        }
+
+        const statusIcons = { upcoming: "📅", ongoing: "✈️", completed: "✅" };
+
+        list.innerHTML = trips
+          .map((trip) => {
+            const icon = statusIcons[trip.status] || "📅";
+            const statusText =
+              trip.status === "upcoming"
+                ? "Akan Datang"
+                : trip.status === "ongoing"
+                ? "Berlangsung"
+                : "Selesai";
+            return `
+          <div class="card-item">
+            ${
+              trip.imageUrl
+                ? `<img src="${trip.imageUrl}" alt="${trip.title}" class="card-image" onerror="this.style.display='none'; this.alt='Gambar gagal dimuat';">`
+                : ""
+            }
+            <div class="card-title">${trip.title}</div>
+            <div class="card-desc">📅 ${trip.date}</div>
+            <div class="card-desc">💰 Rp ${(trip.amount || 0).toLocaleString(
+              "id-ID"
+            )}</div>
+            ${trip.notes ? `<div class="card-desc">📝 ${trip.notes}</div>` : ""}
+            <div class="card-meta">
+              <span class="meta-tag">${icon} ${statusText}</span>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-danger btn-small" onclick="deleteItem('${
+                trip.id
+              }')">Hapus</button>
+            </div>
+          </div>
+        `;
+          })
+          .join("");
+      }
+
+      function renderChallenges() {
+        const list = document.getElementById("challenge-list");
+        let challenges = allData.filter((item) => item.type === "challenge");
+
+        if (currentChallengeFilter === "active") {
+          challenges = challenges.filter((c) => c.status === "active");
+        } else if (currentChallengeFilter === "completed-challenge") {
+          challenges = challenges.filter((c) => c.status === "completed");
+        }
+
+        if (challenges.length === 0) {
+          list.innerHTML =
+            '<div class="empty-state"><div class="empty-icon">🏆</div><p>No challenges yet</p></div>';
+          return;
+        }
+
+        const priorityIcons = { high: "🔴", medium: "🟡", low: "🟢" };
+
+        list.innerHTML = challenges
+          .map((challenge) => {
+            const progress = challenge.progress || 0;
+            const priorityClass = `priority-${challenge.priority}`;
+            const priorityIcon = priorityIcons[challenge.priority] || "🟡";
+            const priorityText =
+              challenge.priority === "high"
+                ? "Tinggi"
+                : challenge.priority === "medium"
+                ? "Sedang"
+                : "Rendah";
+            const statusText =
+              challenge.status === "active" ? "Aktif" : "Selesai";
+
+            return `
+          <div class="card-item">
+            ${
+              challenge.imageUrl
+                ? `<img src="${challenge.imageUrl}" alt="${challenge.title}" class="card-image" onerror="this.style.display='none'; this.alt='Gambar gagal dimuat';">`
+                : ""
+            }
+            <div class="card-title">${challenge.title}</div>
+            <div class="card-desc">${challenge.description}</div>
+            <div class="card-meta">
+              <span class="meta-tag ${priorityClass}">${priorityIcon} ${priorityText}</span>
+              <span class="meta-tag">${
+                challenge.status === "active" ? "🔄" : "✅"
+              } ${statusText}</span>
+              <span class="meta-tag">📊 ${progress}%</span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar" style="width: ${progress}%"></div>
+            </div>
+            <div class="card-actions">
+              ${
+                challenge.status === "active"
+                  ? `<button class="btn btn-success btn-small" onclick="updateProgress('${
+                      challenge.id
+                    }', ${Math.min(progress + 10, 100)})">+10%</button>`
+                  : ""
+              }
+              ${
+                challenge.status === "active" && progress >= 100
+                  ? `<button class="btn btn-secondary btn-small" onclick="completeChallenge('${challenge.id}')">Selesai</button>`
+                  : ""
+              }
+              <button class="btn btn-danger btn-small" onclick="deleteItem('${
+                challenge.id
+              }')">Hapus</button>
+            </div>
+          </div>
+        `;
+          })
+          .join("");
+      }
+
+      function renderProducts() {
+        const list = document.getElementById("product-list");
+        let products = allData.filter((item) => item.type === "product");
+
+        if (currentProductFilter === "available") {
+          products = products.filter((p) => p.status === "available");
+        } else if (currentProductFilter === "sold") {
+          products = products.filter((p) => p.status === "sold");
+        } else if (currentProductFilter === "reserved") {
+          products = products.filter((p) => p.status === "reserved");
+        }
+
+        if (products.length === 0) {
+          list.innerHTML =
+            '<div class="empty-state"><div class="empty-icon">🛍️</div><p>No products yet</p></div>';
+          return;
+        }
+
+        const statusIcons = { available: "✅", sold: "💰", reserved: "📦" };
+        const categoryIcons = {
+          art: "🎨",
+          craft: "✂️",
+          music: "🎵",
+          digital: "💻",
+          other: "🌟",
+        };
+
+        list.innerHTML = products
+          .map((product) => {
+            const icon = statusIcons[product.status] || "✅";
+            const catIcon = categoryIcons[product.category] || "🌟";
+            const statusText =
+              product.status === "available"
+                ? "Tersedia"
+                : product.status === "sold"
+                ? "Terjual"
+                : "Dipesan";
+
+            return `
+          <div class="item">
+            <div class="item-content">
+              <div class="item-title">${product.title}</div>
+              <div class="item-desc">${product.description}</div>
+              ${
+                product.imageUrl
+                  ? `<img src="${product.imageUrl}" alt="${product.title}" class="item-image" onerror="this.style.display='none'; this.alt='Gambar gagal dimuat';">`
+                  : ""
+              }
+              <div class="item-desc" style="margin-top: 0.5rem; font-weight: 700; color: #ec4899;">💰 Rp ${(
+                product.amount || 0
+              ).toLocaleString("id-ID")}</div>
+              <div class="item-meta">
+                <span class="meta-tag">${catIcon} ${product.category}</span>
+                <span class="meta-tag">${icon} ${statusText}</span>
+              </div>
+            </div>
+            <div class="item-actions">
+              <button class="btn btn-danger btn-small" onclick="deleteItem('${
+                product.id
+              }')">Hapus</button>
+            </div>
+          </div>
+        `;
+          })
+          .join("");
+      }
+
+      function renderMoods() {
+        const list = document.getElementById("mood-list");
+        const moods = allData
+          .filter((item) => item.type === "mood")
+          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+        if (moods.length === 0) {
+          list.innerHTML =
+            '<div class="empty-state"><div class="empty-icon">😊</div><p>No mood records yet</p></div>';
+          return;
+        }
+
+        list.innerHTML = moods
+          .map(
+            (mood) => `
+        <div class="item">
+          <div class="item-content">
+            <div class="item-title">${mood.mood} ${mood.date}</div>
+            <div class="item-desc">${mood.description || "No note"}</div>
+            <div class="item-meta">
+              <span class="meta-tag">👤 ${mood.person}</span>
+            </div>
+          </div>
+          <div class="item-actions">
+            <button class="btn btn-danger btn-small" onclick="deleteItem('${
+              mood.id
+            }')">Delete</button>
+          </div>
+        </div>
+      `
+          )
+          .join("");
+      }
+
+      function renderDiary() {
+        const list = document.getElementById("diary-list");
+        const diaries = allData
+          .filter((item) => item.type === "diary")
+          .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        if (diaries.length === 0) {
+          list.innerHTML =
+            '<div class="empty-state"><div class="empty-icon">📝</div><p>No diary entries yet</p></div>';
+          return;
+        }
+
+        list.innerHTML = diaries
+          .map(
+            (diary) => `
+        <div class="diary-entry">
+          <div class="diary-header">
+            <div class="diary-date">📅 ${diary.date} - ${diary.title}</div>
+            <button class="btn btn-danger btn-small" onclick="deleteItem('${
+              diary.id
+            }')">Delete</button>
+          </div>
+          <div class="diary-content">${diary.description}</div>
+          ${
+            diary.lyrics
+              ? `<div class="diary-content" style="margin-top: 1rem; font-style: italic; opacity: 0.8;">🎵 "${diary.lyrics}"</div>`
+              : ""
+          }
+        </div>
+      `
+          )
+          .join("");
+      }
+
+      function renderFinance() {
+        const list = document.getElementById("finance-list");
+        let finances = allData.filter((item) => item.type === "finance");
+
+        if (currentFinanceFilter === "income") {
+          finances = finances.filter((f) => f.category === "income");
+        } else if (currentFinanceFilter === "expense") {
+          finances = finances.filter((f) => f.category === "expense");
+        } else if (currentFinanceFilter === "iluze") {
+          finances = finances.filter((f) => f.person === "Iluze");
+        } else if (currentFinanceFilter === "che") {
+          finances = finances.filter((f) => f.person === "Che");
+        } else if (currentFinanceFilter === "both") {
+          finances = finances.filter((f) => f.person === "Both");
+        }
+
+        finances.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        const income = allData
+          .filter((f) => f.type === "finance" && f.category === "income")
+          .reduce((sum, f) => sum + (f.amount || 0), 0);
+        const expense = allData
+          .filter((f) => f.type === "finance" && f.category === "expense")
+          .reduce((sum, f) => sum + (f.amount || 0), 0);
+        const balance = income - expense;
+
+        document.getElementById(
+          "total-income"
+        ).textContent = `Rp ${income.toLocaleString("id-ID")}`;
+        document.getElementById(
+          "total-expense"
+        ).textContent = `Rp ${expense.toLocaleString("id-ID")}`;
+        document.getElementById(
+          "balance"
+        ).textContent = `Rp ${balance.toLocaleString("id-ID")}`;
+
+        renderFinanceChart();
+
+        if (finances.length === 0) {
+          list.innerHTML =
+            '<div class="empty-state"><div class="empty-icon">���</div><p>No transactions yet</p></div>';
+          return;
+        }
+
+        const categoryIcons = {
+          marketplace: "🛍️",
+          food: "🍔",
+          transport: "🚗",
+          entertainment: "����",
+          trip: "✈️",
+          hobby: "🎨",
+          other: "💼",
+        };
+
+        list.innerHTML = finances
+          .map((finance) => {
+            const isIncome = finance.category === "income";
+            const sign = isIncome ? "+" : "-";
+            const color = isIncome ? "#10b981" : "#ef4444";
+            const icon = isIncome ? "💰" : "💸";
+            const catIcon = categoryIcons[finance.financeCategory] || "💼";
+            const personIcon =
+              finance.person === "Iluze"
+                ? "💙"
+                : finance.person === "Che"
+                ? "💖"
+                : "👫";
+
+            return `
+          <div class="item">
+            <div class="item-content">
+              <div class="item-title">${finance.title}</div>
+              <div class="item-desc">📅 ${finance.date}</div>
+              <div class="item-desc" style="margin-top: 0.5rem; font-weight: 700; color: ${color};">${icon} ${sign} Rp ${(
+              finance.amount || 0
+            ).toLocaleString("id-ID")}</div>
+              <div class="item-meta">
+                <span class="meta-tag">${catIcon} ${
+              finance.financeCategory
+            }</span>
+                <span class="meta-tag">${personIcon} ${
+              finance.person || "Unknown"
+            }</span>
+              </div>
+            </div>
+            <div class="item-actions">
+              <button class="btn btn-danger btn-small" onclick="deleteItem('${
+                finance.id
+              }')">Delete</button>
+            </div>
+          </div>
+        `;
+          })
+          .join("");
+      }
+
+      function renderFinanceChart() {
+        const canvas = document.getElementById("finance-chart");
+        if (!canvas) return;
+
+        const ctx = canvas.getContext("2d");
+        const finances = allData.filter((item) => item.type === "finance");
+
+        const today = new Date();
+        const dates = [];
+        for (let i = chartDays - 1; i >= 0; i--) {
+          const date = new Date(today);
+          date.setDate(date.getDate() - i);
+          dates.push(date.toISOString().split("T")[0]);
+        }
+
+        const dailyIncome = dates.map((date) => {
+          return finances
+            .filter((f) => f.date === date && f.category === "income")
+            .reduce((sum, f) => sum + (f.amount || 0), 0);
+        });
+
+        const dailyExpense = dates.map((date) => {
+          return finances
+            .filter((f) => f.date === date && f.category === "expense")
+            .reduce((sum, f) => sum + (f.amount || 0), 0);
+        });
+
+        const dailyBalance = [];
+        let runningBalance = 0;
+        for (let i = 0; i < dates.length; i++) {
+          runningBalance += dailyIncome[i] - dailyExpense[i];
+          dailyBalance.push(runningBalance);
+        }
+
+        const labels = dates.map((date) => {
+          const d = new Date(date);
+          return `${d.getDate()}/${d.getMonth() + 1}`;
+        });
+
+        canvas.width = canvas.offsetWidth;
+        canvas.height = 300;
+
+        drawLineChart(ctx, canvas.width, canvas.height, labels, [
+          { label: "Income", data: dailyIncome, color: "#10b981" },
+          { label: "Expense", data: dailyExpense, color: "#ef4444" },
+          { label: "Balance", data: dailyBalance, color: "#ec4899" },
+        ]);
+      }
+
+      function drawLineChart(ctx, width, height, labels, datasets) {
+        const padding = 60;
+        const chartWidth = width - padding * 2;
+        const chartHeight = height - padding * 2;
+
+        let maxValue = 0;
+        datasets.forEach((dataset) => {
+          const max = Math.max(...dataset.data, 0);
+          if (max > maxValue) maxValue = max;
+        });
+
+        if (maxValue === 0) maxValue = 100000;
+
+        const magnitude = Math.pow(10, Math.floor(Math.log10(maxValue)));
+        maxValue = Math.ceil(maxValue / magnitude) * magnitude;
+
+        ctx.clearRect(0, 0, width, height);
+
+        ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
+        ctx.fillRect(0, 0, width, height);
+
+        ctx.strokeStyle = "rgba(236, 72, 153, 0.2)";
+        ctx.lineWidth = 1;
+
+        for (let i = 0; i <= 5; i++) {
+          const y = padding + (chartHeight / 5) * i;
+          ctx.beginPath();
+          ctx.moveTo(padding, y);
+          ctx.lineTo(width - padding, y);
+          ctx.stroke();
+
+          const value = maxValue - (maxValue / 5) * i;
+          ctx.fillStyle = "#6b7280";
+          ctx.font = "12px Inter, sans-serif";
+          ctx.textAlign = "right";
+          ctx.fillText(`${(value / 1000).toFixed(0)}k`, padding - 10, y + 4);
+        }
+
+        ctx.fillStyle = "#6b7280";
+        ctx.font = "12px Inter, sans-serif";
+        ctx.textAlign = "center";
+
+        const step = Math.max(1, Math.floor(labels.length / 8));
+        labels.forEach((label, i) => {
+          if (i % step === 0 || i === labels.length - 1) {
+            const x = padding + (chartWidth / (labels.length - 1)) * i;
+            ctx.fillText(label, x, height - padding + 20);
+          }
+        });
+
+        datasets.forEach((dataset) => {
+          ctx.strokeStyle = dataset.color;
+          ctx.lineWidth = 3;
+          ctx.beginPath();
+
+          dataset.data.forEach((value, i) => {
+            const x = padding + (chartWidth / (labels.length - 1)) * i;
+            const y = padding + chartHeight - (value / maxValue) * chartHeight;
+
+            if (i === 0) {
+              ctx.moveTo(x, y);
+            } else {
+              ctx.lineTo(x, y);
+            }
+          });
+
+          ctx.stroke();
+
+          ctx.fillStyle = dataset.color;
+          dataset.data.forEach((value, i) => {
+            const x = padding + (chartWidth / (labels.length - 1)) * i;
+            const y = padding + chartHeight - (value / maxValue) * chartHeight;
+
+            ctx.beginPath();
+            ctx.arc(x, y, 4, 0, Math.PI * 2);
+            ctx.fill();
+          });
+        });
+
+        let legendX = padding;
+        const legendY = 20;
+
+        datasets.forEach((dataset) => {
+          ctx.fillStyle = dataset.color;
+          ctx.fillRect(legendX, legendY, 15, 15);
+
+          ctx.fillStyle = "#1f2937";
+          ctx.font = "14px Inter, sans-serif";
+          ctx.textAlign = "left";
+          ctx.fillText(dataset.label, legendX + 20, legendY + 12);
+
+          legendX += ctx.measureText(dataset.label).width + 50;
+        });
+      }
+
+      function renderGoals() {
+        const list = document.getElementById("goals-list");
+        const goals = allData.filter((item) => item.type === "goal");
+
+        if (goals.length === 0) {
+          list.innerHTML =
+            '<div class="empty-state"><div class="empty-icon">����</div><p>No goals yet</p></div>';
+          return;
+        }
+
+        const categoryIcons = {
+          travel: "✈️",
+          milestone: "💍",
+          experience: "🎉",
+          learning: "📚",
+          adventure: "🏔️",
+          other: "💫",
+        };
+
+        list.innerHTML = goals
+          .map((goal) => {
+            const icon = categoryIcons[goal.category] || "💫";
+            const completedClass = goal.completed
+              ? 'style="opacity: 0.7; text-decoration: line-through;"'
+              : "";
+
+            return `
+          <div class="item" ${completedClass}>
+            <div class="item-content">
+              <div class="item-title">${icon} ${goal.title}</div>
+              <div class="item-desc">${goal.description}</div>
+              <div class="item-meta">
+                <span class="meta-tag">${goal.category}</span>
+                ${
+                  goal.completed
+                    ? '<span class="meta-tag" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">✓ Completed</span>'
+                    : ""
+                }
+              </div>
+            </div>
+            <div class="item-actions">
+              ${
+                !goal.completed
+                  ? `<button class="btn btn-success btn-small" onclick="toggleGoal('${goal.id}')">✓ Complete</button>`
+                  : ""
+              }
+              <button class="btn btn-danger btn-small" onclick="deleteItem('${
+                goal.id
+              }')">Delete</button>
+            </div>
+          </div>
+        `;
+          })
+          .join("");
+      }
+
+      function renderMessages() {
+        const list = document.getElementById("messages-list");
+        const messages = allData
+          .filter((item) => item.type === "message")
+          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+        if (messages.length === 0) {
+          list.innerHTML =
+            '<div class="empty-state"><div class="empty-icon">💌</div><p>No messages yet</p></div>';
+          return;
+        }
+
+        list.innerHTML = messages
+          .map((msg) => {
+            const icon = msg.from === "Iluze" ? "💙" : "💖";
+            return `
+          <div class="item" style="border-left-color: #8b5cf6;">
+            <div class="item-content">
+              <div class="item-title">${icon} From ${msg.from}</div>
+              <div class="item-desc" style="font-size: 1rem; margin-top: 0.75rem; line-height: 1.7;">${
+                msg.message
+              }</div>
+              <div class="item-meta" style="margin-top: 1rem;">
+                <span class="meta-tag">📅 ${formatDate(msg.date)}</span>
+              </div>
+            </div>
+            <div class="item-actions">
+              <button class="btn btn-danger btn-small" onclick="deleteItem('${
+                msg.id
+              }')">Delete</button>
+            </div>
+          </div>
+        `;
+          })
+          .join("");
+      }
+
+      function updateProgress(id, newProgress) {
+        const item = allData.find((d) => d.id === id);
+        if (!item) return;
+
+        item.progress = newProgress;
+        saveData();
+
+        if (item.type === "hobby") {
+          renderHobbies();
+        } else if (item.type === "challenge") {
+          renderChallenges();
+        }
+
+        showToast("Progress berhasil diperbarui!");
+      }
+
+      function completeChallenge(id) {
+        const item = allData.find((d) => d.id === id);
+        if (!item) return;
+
+        item.status = "completed";
+        item.completedAt = new Date().toISOString();
+        saveData();
+        updateDashboard();
+        renderChallenges();
+        showToast("🎉 Tantangan selesai!");
+      }
+
+      function toggleGoal(id) {
+        const goal = allData.find((item) => item.id === id);
+        if (!goal) return;
+
+        goal.completed = !goal.completed;
+        saveData();
+        renderGoals();
+        showToast(goal.completed ? "Goal selesai! 🎉" : "Goal dibuka kembali");
+      }
+
+      function deleteItem(id) {
+        const index = allData.findIndex((d) => d.id === id);
+        if (index === -1) return;
+
+        const item = allData[index];
+        allData.splice(index, 1);
+        saveData();
+
+        updateDashboard();
+
+        if (item.type === "story") renderTimeline();
+        else if (item.type === "hobby") renderHobbies();
+        else if (item.type === "travel") renderTravel();
+        else if (item.type === "challenge") renderChallenges();
+        else if (item.type === "product") renderProducts();
+        else if (item.type === "mood") renderMoods();
+        else if (item.type === "diary") renderDiary();
+        else if (item.type === "finance") renderFinance();
+        else if (item.type === "goal") renderGoals();
+        else if (item.type === "message") renderMessages();
+
+        showToast("Berhasil dihapus");
+      }
+
+      function formatDate(dateString) {
+        const date = new Date(dateString);
+        return date.toLocaleDateString("id-ID", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+      }
+
+      function showToast(message, isError = false) {
+        const toast = document.createElement("div");
+        toast.className = `toast ${isError ? "error" : ""}`;
+        toast.textContent = message;
+        document.body.appendChild(toast);
+
+        setTimeout(() => {
+          toast.remove();
+        }, 3000);
+      }
+
+      initializeApp();
+    </script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'9a623eaa702503d4',t:'MTc2NDQyMDc3My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
